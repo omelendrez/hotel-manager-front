@@ -1,6 +1,5 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import AppLogger from './utilities/app-logger';
-import Home from './components/home/Home';
 import Login from './components/login/Login';
 const logger = new AppLogger();
 logger.init();
@@ -32,8 +31,9 @@ function App() {
         FallbackComponent={ErrorFallback}
         onError={errorHandler}
       >
-        <Home />
-        <Login />
+        <div className='container'>
+          <Login />
+        </div>
       </ErrorBoundary>
     </div >
   );

@@ -1,26 +1,30 @@
-import './Login.css';
+import { useContext } from "react";
+import ThemeContext from "../../context/theme-provider";
 
 export default function Login() {
+  const { theme, toggle } = useContext(ThemeContext);
+
   return (
-    <div className="login">
+    <div>
       <h1>Login</h1>
       <form method="post">
-        <div className="txt_field">
+        <label>Username
           <input type="text" required />
           <span></span>
-          <label>Username</label>
-        </div>
-        <div className="txt_field">
+        </label>
+        <label>Password
           <input type="password" required />
           <span></span>
-          <label>Password</label>
-        </div>
-        <div className="pass">Forgot Password?</div>
-        <input className='button' type="submit" value="Login" />
-        <div className="signup_link">
-          Not a member? <a href="http://localhost:3000">Signup</a>
-        </div>
+        </label>
+        <div>Forgot Password?</div>
+        <input type="submit" value="Login" />
+        Not a member? <a href="http://localhost:3000">Signup</a>
       </form>
+      <label>
+        <span className={`material-icons`}>{theme === 'dark' ? 'sunny' : 'bedtime'}
+          <input type="checkbox" role="switch" onChange={toggle}></input>
+        </span>
+      </label>
     </div>
   );
 };
