@@ -1,7 +1,9 @@
+import { Provider } from 'react-redux';
+import store from './store';
 import { ErrorBoundary } from 'react-error-boundary';
-import AppLogger from './utilities/app-logger';
-import Login from './components/login/Login';
-import NavBar from './components/NavBar/NavBar';
+import { AppLogger } from './utilities/app-logger';
+import { Login } from './components/login';
+import { NavBar } from './components/NavBar';
 const logger = new AppLogger();
 logger.init();
 
@@ -32,10 +34,10 @@ function App() {
         FallbackComponent={ErrorFallback}
         onError={errorHandler}
       >
-        <div>
+        <Provider store={store}>
           <NavBar />
           <Login />
-        </div>
+        </Provider>
       </ErrorBoundary>
     </div >
   );
